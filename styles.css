@@ -80,6 +80,14 @@ header {
     }
 }
 
+.slide-in-left {
+    animation: slideInLeft 1s ease-in-out;
+}
+
+.slide-in-right {
+    animation: slideInRight 1s ease-in-out;
+}
+
 /* Landing Section */
 #landing {
     height: 100vh;
@@ -158,10 +166,60 @@ header {
 
 .post h2 {
     margin: 0 0 0.5em;
-    font-size: 1.5em;
+    font-size: 1.8em;
 }
 
 .post p {
     margin: 0;
-    color: #666
+    font-size: 1.2em;
+    color: #666;
+}
 
+/* Footer Section */
+footer {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1em 0;
+    text-align: center;
+    color: #333;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #nav-links {
+        display: none;
+        flex-direction: column;
+    }
+
+    #menu-toggle {
+        display: block;
+    }
+
+    .nav-container.open #nav-links {
+        display: flex;
+    }
+
+    #landing h1 {
+        font-size: 2.5em;
+    }
+
+    #landing h2 {
+        font-size: 1.5em;
+    }
+
+    #landing .scroll-down {
+        font-size: 1em;
+    }
+
+    .post {
+        padding: 1em;
+    }
+
+    .post h2 {
+        font-size: 1.5em;
+    }
+
+    .post p {
+        font-size: 1em;
+    }
+}
