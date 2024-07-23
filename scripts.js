@@ -1,27 +1,27 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const navContainer = document.querySelector('.nav-container');
+
+    menuToggle.addEventListener('click', () => {
+        navContainer.classList.toggle('open');
+    });
+
+    // Add scroll event to posts section for animation
     const posts = document.querySelectorAll('.post');
-    
-    const observer = new IntersectionObserver((entries) => {
+
+    const options = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const post = entry.target;
-                const postIndex = Array.from(posts).indexOf(post);
-                const direction = (postIndex % 2 === 0) ? 'left' : 'right';
-                
-                // Resetting previous animations
-                post.classList.remove('slide-in-left', 'slide-in-right');
-                
-                // Applying new animation
-                post.classList.add(`slide-in-${direction}`);
-                post.style.opacity = 1; // Ensure post is visible
-            } else {
-                // Resetting post when it leaves the viewport
-                const post = entry.target;
-                post.classList.remove('slide-in-left', 'slide-in-right');
-                post.style.opacity = 0; // Hide post when not in view
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, options);
 
     posts.forEach(post => {
         observer.observe(post);
